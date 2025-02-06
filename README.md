@@ -2,7 +2,7 @@
 
 Speaky Bird is a clone of the famous Flappy Bird game, but with speech recognition. The game is controlled by saying the commands displayed on the screen and these commands are customizable. To recognize the voice commands Fasterwhisper model is used.
 
-## Installation (Tested on Ubuntu and Windows)
+## Installation (Tested on Ubuntu 22.04.4 LTS and Windows 10)
 **Speech recognition works faster on Ubuntu than Windows making the game more enjoyable.**
 
 1. Clone the repository

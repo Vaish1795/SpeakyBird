@@ -36,7 +36,6 @@ class ImageManager:
         # Set upper pipe images based on the chosen color
 
         self.images['game_over'] = pg.image.load('../assets/images/sprites/gameover.png').convert_alpha()
-        self.images['restart'] = pg.image.load('../assets/images/sprites/restart.png').convert_alpha()
         self.randomizer()
 
         self.images['pipe_upper'] = pg.image.load(
@@ -90,8 +89,6 @@ class ImageManager:
         }
 
         self.images['staircase'] = pg.image.load('../assets/images/sprites/stair_no_top.png').convert_alpha()
-
-        self.images['smoke'] = pg.image.load('../assets/images/sprites/smoke/Smoke_2_128.png')
 
         self.images['welcome'] = pg.image.load('../assets/images/sprites/speaky_bird.png').convert_alpha()
 
