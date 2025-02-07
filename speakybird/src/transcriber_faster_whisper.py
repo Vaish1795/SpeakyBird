@@ -318,8 +318,7 @@ class FasterWhisperTranscriber:
                                               condition_on_previous_text=False,
                                               initial_prompt=f"{self.initial_prompt}",
                                               temperature=0.2, prompt_reset_on_temperature=True, repetition_penalty=1.5,
-                                              length_penalty=2, suppress_tokens=self.tokens, suppress_blank=True,
-                                              output_language="en")
+                                              length_penalty=2, suppress_tokens=self.tokens, suppress_blank=True)
             end_time = time.time()
             total_time = end_time - start_time
 

@@ -4,3 +4,4 @@ venv/
 .env
 .idea/
 player_data.csv
+level_settings.json

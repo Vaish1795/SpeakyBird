@@ -1,0 +1,26 @@
+positive: &positive_phrases
+  - I am happy
+  - I can do it
+  - I trust myself
+  - I love myself
+  - I am brave
+  - I am pretty
+  - I am beautiful
+  - I am smart
+
+negative: &negative_phrases
+  - I hate myself
+  - I am not beautiful
+  - I can not do it
+  - I am ugly
+  - No one likes me
+  - I am not smart
+  - I am not brave
+  - I am not pretty
+
+pipes: &pipes_phrases
+  - brave
+#  - happy
+#  - smart
+#  - pretty
+

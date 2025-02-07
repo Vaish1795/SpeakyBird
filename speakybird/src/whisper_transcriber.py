@@ -1,9 +1,7 @@
-import os
 import time
 from queue import Queue
 from threading import Thread
 
-import matplotlib.pyplot as plt
 import numpy as np
 import pyaudio
 import torch
@@ -25,50 +23,6 @@ class WhisperTranscriber:
 
         self.transcribe_result_plot = []
 
-        # self.web_rtc_vad = webrtcvad.Vad(3)
-        #
-        # self.FRAME_DURATION_MS = 10
-        # self.FRAME_SIZE = int(self.constants.frame_rate_audio * self.FRAME_DURATION_MS / 1000)  # Frame size in samples
-        # self.CHUNK = self.FRAME_SIZE * 2  # 320 samples
-
-    # def record_audio(self, chunk=1024):
-    #     print('Recording audio')
-    #     audio = pyaudio.PyAudio()
-    #
-    #     # get the index of the default microphone device
-    #     default_device = audio.get_default_input_device_info()
-    #     default_device_index = default_device.get('index')
-    #
-    #     # record audio from the microphone
-    #     stream = audio.open(format=self.AUDIO_FORMAT, channels=self.constants.channels,
-    #                         rate=self.constants.frame_rate_audio,
-    #                         input=True,
-    #                         input_device_index=default_device_index, frames_per_buffer=self.FRAME_SIZE)
-    #
-    #     frames = []
-    #     silent_frames = []
-    #
-    #     while not self._stop_threads:
-    #         data = stream.read(self.CHUNK)
-    #         assert (len(data) >= self.CHUNK)
-    #
-    #         if len(data) >= self.CHUNK:
-    #             is_speech = self.web_rtc_vad.is_speech(data, self.constants.frame_rate_audio)
-    #             stream_array = np.frombuffer(data, dtype=np.int16)
-    #             if is_speech:
-    #                 frames.append(stream_array)
-    #             else:
-    #                 silent_frames.append(stream_array)
-    #
-    #         if (len(frames) + len(silent_frames) >= (self.constants.frame_rate_audio * self.constants.record_seconds)
-    #                 / self.CHUNK):
-    #             self.recordings.put(frames.copy())
-    #             frames = []
-    #             silent_frames = []
-    #
-    #     stream.stop_stream()
-    #     stream.close()
-    #     audio.terminate()
     def record_audio(self, chunk=1024):
         print('Recording audio')
         audio = pyaudio.PyAudio()
@@ -153,24 +107,3 @@ class WhisperTranscriber:
     def stop_recording(self):
         self._stop_threads = True
         self.recordings = Queue()
-        max_value = max(self.transcribe_times)
-        if self.plot_transcribe_time:
-            print(self.transcribe_times)
-            plt.stem(self.transcribe_times)
-            plt.xlabel("Instance")
-            plt.ylabel("Transcribe Time (sec)")
-            plt.title("Whisper Transcribe Time")
-            plt.yticks(np.arange(0, max_value, step=0.2))
-
-            for idx, time_text_pair in enumerate(self.transcribe_result_plot):
-                time_t, text = time_text_pair
-                plt.text(idx, time_t, text, rotation=90)
-
-            folder_path = "../outputs/plots/"
-
-            # Create the folder if it doesn't exist
-            os.makedirs(folder_path, exist_ok=True)
-            file_path = os.path.join(folder_path, "whisper_cuda.png")
-            plt.savefig(file_path)
-
-            plt.show()
