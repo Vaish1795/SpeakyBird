@@ -1,13 +1,13 @@
 # Speaky Bird
 
-SpeakyBird is a modified version of the famous Flappy Bird game, but with speech recognition. The game is controlled by saying the commands displayed on the screen and these commands are customizable. To recognize the voice commands Fasterwhisper model is used.
+SpeakyBird is a modified version of the famous Flappy Bird game, but with speech recognition. This version is inspired by the [SmileyBird](https://github.com/mert-o/FlappyBird) project. Unlike SmileyBird, here the game is controlled by saying the commands displayed on the screen. These commands are customizable. To recognize the voice commands [Faster-Whisper](https://github.com/SYSTRAN/faster-whisper) model is used.
 
 ## Installation (Tested on Ubuntu 22.04.4 LTS and Windows 10)
 **Speech recognition works faster on Ubuntu than Windows making the game more enjoyable.**
 
 1. Clone the repository using `git clone https://github.com/Vaish1795/SpeakyBird.git`
 
-**!! Do not directly run the requirements file as it will not install openai whisper and faster whisper properly. Some packages in the openai whisper are not compatible with the higher version of the faster whisper resulting in conflicts. Follow the steps (Tested on Ubuntu)**
+**!! Do not directly run the requirements file as it will not install openai whisper and faster whisper properly. Some packages in the openai whisper are not compatible with the higher version of the faster whisper resulting in conflicts. Follow the steps (Tested on Ubuntu and Windows)**
 
 **Anaconda/Miniconda users**
 -First, create a new Conda environment and activate it:
@@ -23,8 +23,11 @@ Next, install faster whisper:
 ```bash
 pip install "faster-whisper @ git+https://github.com/SYSTRAN/faster-whisper.git"
 ```
+
 3. Install the required packages using `pip install -r requirements.txt`
-4. Navigate to the `src` directory
+
+Note: *webRTC VAD package requires visual studio build tools to be installed on windows. If you encounter an error while installing webrtcvad, install visual studio build tools from https://visualstudio.microsoft.com/visual-cpp-build-tools/. Make sure Windows 10SDK is installed and rerun the requirements file.*
+4. Navigate to the `src` directory using `cd speakbird/src`
 5. Run the game using `python main.py`
 5. Say the commands displayed on the screen to control the bird
 6. Enjoy!
@@ -95,3 +98,8 @@ To change the commands,
 3. Change the model from `tiny.en` in `model` variable to `tiny` for german language.
 
 One can view the different models available at https://github.com/openai/whisper.
+
+## References
+1. Faster-Whisper https://github.com/SYSTRAN/faster-whisper.
+2. Openai Whisper https://github.com/openai/whisper.
+3. SmileyBird Project https://github.com/mert-o/FlappyBird.
